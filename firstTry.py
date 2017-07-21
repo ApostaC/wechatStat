@@ -27,13 +27,12 @@ def recordForMsg(msg):
     print('start adding!')
     if msg['Type'] == TEXT:
         content = msg['Content']
-    elif msg['Type'] == PICTURE:
-        content = '@PICTURE MSG'
+    else:
+        content = '#OTHER CONTENTS'
     tempTurple=(msg['ActualNickName'],msg['Content'],time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
     msgList.append(tempTurple)
-    if len(msgList) % 3 == 0 :
-        print("for 3!")
-        print(msgList)
+    if len(msgList) % 10 == 0 :
+        print("numbers come to {}".format(len(msgList)))
         #save to csv
         pd.DataFrame(msgList).to_csv('test.csv',sep=',')
 
